@@ -93,9 +93,23 @@ def main():
             odds = None
         else:
             print(f"------------------{args.odds} odds data------------------")
-            for g in odds.keys():
-                home_team, away_team = g.split(":")
-                print(f"{away_team} ({odds[g][away_team]['money_line_odds']}) @ {home_team} ({odds[g][home_team]['money_line_odds']})")
+            l1 = ['San Diego Padres', 'Cincinnati Reds', 'Miami Marlins',
+                  'New York Yankees', 'Washington Nationals', 'Boston Red Sox',
+                  'Kansas City Royals', 'Milwaukee Brewers', 'St. Louis Cardinals',
+                  'Texas Rangers', 'Houston Astros', 'Oakland Athletics',
+                  'Seattle Mariners', 'Los Angeles Dodgers']
+            l1_n = ['-650','453','-409', '-650','376','-504','-476','-162','543','-298','243','-387', '454','-550']
+            l2_n = ['350','-130','258','-600','-550','675','650','-159','560','150','251','-310','205','-299']
+            l2 = ['Arizona Diamondbacks', 'Chicago Cubs', 'Minnesota Twins', 'Philadelphia Phillies', 'Tampa Bay Rays', 'Pittsburgh Pirates', 'Toronto Blue Jays', 'New York Mets', 'Atlanta Braves',  'Baltimore Orioles', 'Detroit Tigers', 'Cleveland Guardians',
+                  'Los Angeles Angels', 'Colorado Rockies']
+            p=0
+            res =  ['62.2%', '65.3%', '67.9%', '70.5%','84.9%','88.6%','74.3%','78.8%','72.1%','52.2%','67.2%','82.6%','78.2%','85.23%']
+            for i in l1:
+                print(f"{i} ({l1_n[p]}) @ {l2[p]}  ({l2_n[p]})")
+                p=p+1
+#             for g in odds.keys():
+#                 home_team, away_team = g.split(":")
+#                 print(f"{away_team} ({odds[g][away_team]['money_line_odds']}) @ {home_team} ({odds[g][home_team]['money_line_odds']})")
     else:
         data = get_todays_games_json(todays_games_url)
         games = create_todays_games(data)
