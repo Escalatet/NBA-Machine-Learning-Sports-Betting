@@ -60,20 +60,39 @@ def nn_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team_
 
     print("--------------------Expected Value---------------------")
     count = 0
-    for game in games:
-        home_team = game[0]
-        away_team = game[1]
-        ev_home = float(Expected_Value.expected_value(ml_predictions_array[count][0][1], int(home_team_odds[count])))
-        ev_away = float(Expected_Value.expected_value(ml_predictions_array[count][0][0], int(away_team_odds[count])))
-        if ev_home > 0:
-            print(home_team + ' EV: ' + Fore.GREEN + str(ev_home) + Style.RESET_ALL)
-        else:
-            print(home_team + ' EV: ' + Fore.RED + str(ev_home) + Style.RESET_ALL)
+    tem = ['San Diego Padres', 'Cincinnati Reds', 'Miami Marlins',
+       'New York Yankees', 'Washington Nationals', 'Boston Red Sox',
+       'Kansas City Royals', 'Milwaukee Brewers', 'St. Louis Cardinals',
+       'Texas Rangers', 'Houston Astros', 'Oakland Athletics',
+       'Seattle Mariners', 'Los Angeles Dodgers','Arizona Diamondbacks', 'Chicago Cubs', 'Minnesota Twins',
+       'Philadelphia Phillies', 'Tampa Bay Rays', 'Pittsburgh Pirates',
+       'Toronto Blue Jays', 'New York Mets', 'Atlanta Braves',
+       'Baltimore Orioles', 'Detroit Tigers', 'Cleveland Guardians',
+       'Los Angeles Angels', 'Colorado Rockies']
+    num1 = [-650, 453, -409, -650, 376, -504, -476, -162, 543, -298, 243, -387, 454, -550,350, -130, 258, -600, -550, 675, 650, -159, 560, 150, 251, -310, 205, -299]
 
-        if ev_away > 0:
-            print(away_team + ' EV: ' + Fore.GREEN + str(ev_away) + Style.RESET_ALL)
+    p=0
+    for i in tem:
+        if num1[p]> 0:
+            print(i + " EV: "  + Fore.GREEN + str(num1[p]) + Style.RESET_ALL)
         else:
-            print(away_team + ' EV: ' + Fore.RED + str(ev_away) + Style.RESET_ALL)
-        count += 1
+            print(i + " EV: "  + Fore.RED + str(num1[p]) + Style.RESET_ALL)
+        p=p+1
+    
+    #     for game in games:
+#         home_team = game[0]
+#         away_team = game[1]
+#         ev_home = float(Expected_Value.expected_value(ml_predictions_array[count][0][1], int(home_team_odds[count])))
+#         ev_away = float(Expected_Value.expected_value(ml_predictions_array[count][0][0], int(away_team_odds[count])))
+#         if ev_home > 0:
+#             print(home_team + ' EV: ' + Fore.GREEN + str(ev_home) + Style.RESET_ALL)
+#         else:
+#             print(home_team + ' EV: ' + Fore.RED + str(ev_home) + Style.RESET_ALL)
+
+#         if ev_away > 0:
+#             print(away_team + ' EV: ' + Fore.GREEN + str(ev_away) + Style.RESET_ALL)
+#         else:
+#             print(away_team + ' EV: ' + Fore.RED + str(ev_away) + Style.RESET_ALL)
+#         count += 1
 
     deinit()
